@@ -1,6 +1,10 @@
 /*
 This line is used for running the sql script on my WINDOWS pc
 mysql -h localhost -u root -D ses -p < C:/wamp/www/78816033/table.sql
+
+
+This line is used on my linux pc
+mysql -h localhost -u root -D ses -p < table.sql
 */
 
 --SET FOREIGN_KEY_CHECKS = 1;
@@ -8,7 +12,7 @@ mysql -h localhost -u root -D ses -p < C:/wamp/www/78816033/table.sql
 
 CREATE TABLE user(
     ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50),
+    user VARCHAR(50),
     password VARCHAR(60)
     );
 
@@ -23,9 +27,9 @@ CREATE TABLE joblevel (
 CREATE TABLE employee (
   ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_id INT,
-  position_id INT,
   fullname VARCHAR(50),
   surname VARCHAR(50),
+  position_id INT,
   employed_date DATE,
   birthday DATE,
   tell VARCHAR(50),

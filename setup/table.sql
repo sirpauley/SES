@@ -1,4 +1,5 @@
 /*
+This line is used for running the sql script on my WINDOWS pc
 mysql -h localhost -u root -D ses -p < C:/wamp/www/78816033/table.sql
 */
 

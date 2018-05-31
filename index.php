@@ -17,4 +17,6 @@ $users = $DBCLASS->SELECT("user");
 // $pass = md5("password");
 // echo $pass;
 
+//windows push test
+
 ?>

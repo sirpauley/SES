@@ -1,14 +1,7 @@
 /*
-This line is used for running the sql script on my WINDOWS pc
-mysql -h localhost -u root -D ses -p < C:/wamp/www/78816033/table.sql
-
-
-This line is used on my linux pc
+terminal command for running this script
 mysql -h localhost -u root -D ses -p < table.sql
 */
-
---SET FOREIGN_KEY_CHECKS = 1;
-
 
 CREATE TABLE user(
     ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

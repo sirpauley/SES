@@ -1,13 +1,15 @@
 <?php
 /*******************************************************************************
- * 
+ *
  * This is mainly for testing the login details entered on the login page
  * Doing the validation through Javascript
- * 
+ *
  * author: sirPauley
  * email: sirpauley@gmail.com
- * 
+ *
  ******************************************************************************/
+//Login default value
+$returnData["login_success"] = false;
 
  //including my DBCLASS for doing mySQL data handeling
 include("config/config.php");
@@ -16,21 +18,24 @@ include("config/config.php");
 $DBCLASS = new DBCLASS();
 
 //getting the data form user table and test the password entered on loging screen against the password saved on the database
-$users = $DBCLASS->SELECT("user");
+$user = $DBCLASS->SELECT("user", "user", $_POST['username']);
+$user = $user[0];
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+//retrieve password entered
+$password_entered = md5($_POST["password"]);
+$user_password = isset($user['password']) ? $user['password'] : "";
 
-// echo "<pre>";
-// print_r($users);
-// echo "</pre>";
-//
-// echo "<br>";
+//Test login password entered agains password on the database
+if($password_entered === $user['password'] ){
+  $returnData["login_success"] = true;
+}else{
+  $returnData["login_success"] = false;
+}
+
+echo json_encode($returnData);
 
 
-//MD5 encryption for passwords
-// $pass = md5("password");
-// echo $pass;
+//close db connection
+$DBCLASS->close_connection();
 
 ?>

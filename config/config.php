@@ -288,6 +288,12 @@ return $DBArray;
 
 	/***************************DBCLASS***************************************/
  /****************************close connetion with Database***************************************/
+ function rollback(){
+	 $this->conn->rollback();
+ }
+
+	/***************************DBCLASS***************************************/
+ /****************************close connetion with Database***************************************/
  function close_connection() {
 	 $this->conn->close();
  }

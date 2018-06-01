@@ -1,13 +1,17 @@
 <?php
 /*****************************************************
  *
- * Template
+ * employee info
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
  *
  *****************************************************/
+ //including my DBCLASS for doing mySQL data handeling
+ include_once("config/config.php");
 
+ //creating a new instance
+ $DBCLASS = new DBCLASS();
 
 ?>
 <!DOCTYPE html>
@@ -39,18 +43,23 @@
 		<div class="row">
 
       <!--Menu -->
-      <?php
-      $header = "HEADER";
-      include_once("include/menu.php");
-      ?>
+      <?php include_once("include/menu.php");  ?>
 
         <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
 
           <!-- Header-->
-          <?php include_once("include/header.php"); ?>
+          <?php
+          $header = "EMPLOYEES INFORMATION";
+          include_once("include/header.php");
+          ?>
 
           <!-- Code body from here -->
-          <h1>Hallo</h1>
+          <?php
+          //get employ information
+            $employee = $DBCLASS->CUSTOM("SELECT * FROM employee WHERE ID = " . $_GET['id']);
+            $employee = $employee->fetch_assoc();
+            print_r($employee);
+          ?>
 
       </main>
 
@@ -82,3 +91,11 @@
 
 </body>
 </html>
+
+
+<?php
+
+//close db connection
+$DBCLASS->close_connection();
+
+?>

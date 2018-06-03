@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *
- * Employee create
+ * Saving change done to employee details
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
@@ -21,35 +21,6 @@ $errorMessage = "";
 // print_r($_POST);
 // echo "</pre>";
 
-//check if user already exist
-$userExist = $DBCLASScreateEmployee->SELECT('user', 'user', $_POST['username']);
-if(isset($userExist['SQLsuccess']) != "FALSE"){
-  $error = true;
-  $errorMessage .= "User Already exist.\n";
-}
-
-//check if employee already exist
-$employeeExist = $DBCLASScreateEmployee->SELECT('employee', 'fullname', $_POST['fullname'] );
-if(isset($employeeExist['SQLsuccess']) != "FALSE"){
-  $error = true;
-  $errorMessage .= "Employee Already exist.\n";
-}
-
-//test for error and try to create employee
-if(!$error){
-
-  //Create user
-  $_POST['password'] = md5($_POST['password']);
-  $userData = array('user' => $_POST['username'], 'password'=> $_POST['password']);
-  $userCreate = $DBCLASScreateEmployee->INSERT("user", $userData );
-
-  if($userCreate['SQLsuccess'] == "FALSE"){
-    $error = false;
-    $errorMessage .= "User not created \n";
-  }
-
-
-}
 
 if(!$error){
 
@@ -69,7 +40,7 @@ if(!$error){
                   'email'         => $_POST['email']
                 );
 
-  $employeeCreate = $DBCLASScreateEmployee->INSERT("employee", $employeeData );
+  $employeeCreate = $DBCLASScreateEmployee->UPDATE("employee", 'ID', $_POST['id'], $employeeData );
 
   if($employeeCreate['SQLsuccess'] == "FALSE"){
     $error = false;

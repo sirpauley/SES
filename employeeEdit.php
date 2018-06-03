@@ -111,7 +111,7 @@ $employee = $employee->fetch_assoc();
                 </form>
                 <br>
                 <a href="home_page.php" class="pull-left"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>                
-                <button onclick="createEmployee();" type="submit" class="btn btn-success pull-right"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
+                <button onclick="editEmployee();" type="submit" class="btn btn-success pull-right"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
             </div>
         </div>
 
@@ -128,20 +128,99 @@ $employee = $employee->fetch_assoc();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="lib/medialoot/dist/js/bootstrap.min.js"></script>
 
-  <script src="lib/medialoot/js/chart.min.js"></script>
+  <!-- <script src="lib/medialoot/js/chart.min.js"></script>
   <script src="lib/medialoot/js/chart-data.js"></script>
   <script src="lib/medialoot/js/easypiechart.js"></script>
   <script src="lib/medialoot/js/easypiechart-data.js"></script>
   <script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
-  <script src="lib/medialoot/js/custom.js"></script>
+  <script src="lib/medialoot/js/custom.js"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
   <!--noty from https://ned.im/noty-->
   <script src="lib/noty.js" type="text/javascript"></script>
 
   <!--My function library for calling a standard noty function -->
   <script src="lib/noty_function.js" type="text/javascript"></script>
+
+<script>
+
+//prevent submit function to reload page
+$("#editEmployee").submit(function(e) {
+    e.preventDefault();
+  });
+
+  //create function of employee
+  function editEmployee(){
+    //alert("FRIKKIE");
+
+    console.log("username: ", $("#username").val());
+    console.log("password: ", $("#password").val());
+    console.log("retype_password: ", $("#retype-password").val());
+    console.log("fullname: ", $("#fullname").val());
+    console.log("surname: ", $("#surname").val());
+    console.log("joblevel: ", $("#joblevel").val());
+    console.log("employed-date: ", $("#employed-date").val());
+    console.log("birth-date: ", $("#birth-date").val());
+    console.log("tell: ", $("#tell").val());
+    console.log("email: ", $("#email").val());
+
+    //Fetch form to apply custom Bootstrap validation
+    var form = $("#editEmployee")
+    //alert(form.prop('id')) //test to ensure calling form correctly
+    if($("#password").val() === $("#retype-password").val()){
+        if (form[0].checkValidity() === true) {
+
+
+          $.ajax({
+              url: "employeeEdit_json.php",
+              dataType: 'json',
+              type: "POST",
+              data: {
+                username        : $("#username").val(),
+                fullname        : $("#fullname").val(),
+                surname         : $("#surname").val(),
+                joblevel        : $("#joblevel").val(),
+                employeddate    : $("#employed-date").val(),
+                birthday        : $("#birth-date").val(),
+                tell            : $("#tell").val(),
+                email           : $("#email").val(),
+                id              : "<?php echo $_GET['id'] ?>"
+              }
+              }).done(function(data) {
+                console.log(data);
+                  if(!data.error){
+                    notySuccess("Employee data saved!");
+                    setTimeout(function(){window.location.replace("home_page.php")}, 1500);
+
+                  }else{
+                    if(data.errorMessage != ''){
+                      notyError(data.errorMessage);
+                    }else{
+                      notyError('Unexpected error!');
+                    }
+
+                  }
+
+              }).fail(function() {
+
+                  notyError("Database error, Please contact IT Support");
+
+              });
+
+
+            }else{
+                notyError("Form not valid!");
+            }
+          }else{
+            notyError("Password and retype Passwoord must be the same");
+          }
+        }//function
+
+  </script>
+
 
 </body>
 </html>

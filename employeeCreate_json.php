@@ -24,7 +24,7 @@ $errorMessage = "";
 
 //check if user already exist
 $userExist = $DBCLASScreateEmployee->SELECT('user', 'user', $_POST['username']);
-if($userExist['SQLsuccess'] != "FALSE"){
+if(isset($userExist['SQLsuccess']) != "FALSE"){
   $error = true;
   $errorMessage .= "User Already exist.\n";
 }
@@ -41,7 +41,7 @@ if(!$error){
 
   //Create user
   $_POST['password'] = md5($_POST['password']);
-  $userData = array('user' => $_POST['user'], 'password'=> $_POST['password']);
+  $userData = array('user' => $_POST['username'], 'password'=> $_POST['password']);
   $userCreate = $DBCLASScreateEmployee->INSERT("user", $userData );
 
   if($userCreate['SQLsuccess'] == "FALSE"){

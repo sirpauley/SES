@@ -216,7 +216,7 @@ $DBCLASS = new DBCLASS();
                             <td>$birthDate</td>
                             <td>$tell</td>
                             <td>$active</td>
-                            <td><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button> <a href='employee_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
+                            <td><a href='employeeEdit.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button></a> <a href='employee_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
                           </tr>
                         ";
                       }//foreach

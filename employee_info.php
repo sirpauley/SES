@@ -56,14 +56,14 @@
           <!-- Code body from here -->
           <?php
           //get employ information
-            $employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
-            FROM employee e 
-            LEFT JOIN joblevel jl ON e.position_id = jl.ID
-            LEFT JOIN user u on e.user_id = u.ID 
-            WHERE e.ID = " . $_GET['id']);
-            
-            $employee = $employee->fetch_assoc();
-           // print_r($employee);
+          $employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
+          FROM employee e 
+          LEFT JOIN joblevel jl ON e.position_id = jl.ID
+          LEFT JOIN user u on e.user_id = u.ID 
+          WHERE e.ID = " . $_GET['id']);
+          
+          $employee = $employee->fetch_assoc();
+          // print_r($employee);
             printf(
               "<div class='row'>".
                 "<div class='col'><h4>Name:</h4> %s</div>" .
@@ -93,6 +93,11 @@
               $active = ($employee['surname'] == true) ? "ACTIVE" : "NON-ACTIVE"
             );
           ?>
+
+        <br>
+        <div class='row'>                
+          <div class='col'><a href="home_page.php"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a></div>
+        </div>
 
       </main>
 

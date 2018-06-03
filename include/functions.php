@@ -23,10 +23,11 @@ function JobPositionByID(){
 
   $positionsById = array();
 
-  foreach ($positions as $key => $value) {
-    $positionsById[$value['ID']] = StrToUpper($value['description']);
+  if(isset($positions['SQLsuccess']) != "FASLE"){
+    foreach ($positions as $key => $value) {
+      $positionsById[$value['ID']] = StrToUpper($value['description']);
+    }
   }
-
   return $positionsById;
 
   $DBCLASSJob->close_connection();

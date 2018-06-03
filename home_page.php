@@ -188,38 +188,52 @@ $DBCLASS = new DBCLASS();
 
                     //get all employees
                     $employees = $DBCLASS->SELECT("employee");
+                    if(isset($employees['SQLsuccess']) != "FALSE") {
+                      foreach ($employees as $key => $value) {
+                        $name           = (!empty($value['fullname'])) ? strToUpper($value['fullname']) : "NULL";
+                        $surname        = (!empty($value['surname'])) ? strToUpper($value['surname']) : "NULL";
 
-                    foreach ($employees as $key => $value) {
-                      $name           = (!empty($value['fullname'])) ? strToUpper($value['fullname']) : "NULL";
-                      $surname        = (!empty($value['surname'])) ? strToUpper($value['surname']) : "NULL";
+                        $positionID = (!empty($value['position_id'])) ? $value['position_id'] : "NULL";
+                        if(array_key_exists($positionID, $positions)){
+                          $positionName = $positions[$positionID];
+                        }else{
+                          $positionName = "NULL";
+                        }
 
-                      $positionID = (!empty($value['position_id'])) ? $value['position_id'] : "NULL";
-                      if(array_key_exists($positionID, $positions)){
-                        $positionName = $positions[$positionID];
-                      }else{
-                        $positionName = "NULL";
-                      }
+                        $employed_date  = (!empty($value['employed_date'])) ? $value['employed_date'] : "NULL";
+                        $birthDate      = (!empty($value['birthday'])) ? $value['birthday'] : "NULL";
+                        $tell           = (!empty($value['tell'])) ? $value['tell'] : "NULL";
 
-                      $employed_date  = (!empty($value['employed_date'])) ? $value['employed_date'] : "NULL";
-                      $birthDate      = (!empty($value['birthday'])) ? $value['birthday'] : "NULL";
-                      $tell           = (!empty($value['tell'])) ? $value['tell'] : "NULL";
+                        $active         = (!empty($value['ACTIVE']) ) ? $value['ACTIVE'] : 0;
+                        $active         = ($value['ACTIVE'] == 1 ) ? "ACTIVE" : "NOT ACTIVE";
 
-                      $active         = (!empty($value['ACTIVE']) ) ? $value['ACTIVE'] : 0;
-                      $active         = ($value['ACTIVE'] == 1 ) ? "ACTIVE" : "NOT ACTIVE";
-
+                        echo "
+                          <tr>
+                            <td>$name</td>
+                            <td>$surname</td>
+                            <td>$positionName</td>
+                            <td>$employed_date</td>
+                            <td>$birthDate</td>
+                            <td>$tell</td>
+                            <td>$active</td>
+                            <td><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button> <a href='employee_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
+                          </tr>
+                        ";
+                      }//foreach
+                    }else{
                       echo "
-                        <tr>
-                          <td>$name</td>
-                          <td>$surname</td>
-                          <td>$positionName</td>
-                          <td>$employed_date</td>
-                          <td>$birthDate</td>
-                          <td>$tell</td>
-                          <td>$active</td>
-                          <td><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button> <a href='employee_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
-                        </tr>
-                      ";
-                    }
+                      <tr>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                      </tr>
+                    ";
+                    }//if
 
                      ?>
 

@@ -31,7 +31,7 @@ if($userExist['SQLsuccess'] != "FALSE"){
 
 //check if employee already exist
 $employeeExist = $DBCLASScreateEmployee->SELECT('employee', 'fullname', $_POST['fullname'] );
-if($employeeExist['SQLsuccess'] != "FALSE"){
+if(isset($employeeExist['SQLsuccess']) != "FALSE"){
   $error = true;
   $errorMessage .= "Employee Already exist.\n";
 }

@@ -1,7 +1,7 @@
 <?php
 /*****************************************************
  *
- * employee info
+ * Job level info
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
@@ -56,7 +56,7 @@ $header = "JOB LEVEL INFORMATION";
 
           <!-- Code body from here -->
           <?php
-          //get employ information
+          //get jib level information
           $JobLevel = $DBCLASS->SELECT('joblevel', 'ID', $_GET['id']);
           $JobLevel = $JobLevel[0];
 

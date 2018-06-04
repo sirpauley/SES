@@ -139,7 +139,7 @@ $header = "JOB LEVEL";
                             <td>$id</td>
                             <td>$level</td>
                             <td>$description</td>
-                            <td><a href='employeeEdit.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button></a> <a href='jobLevel_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
+                            <td><a href='jobLevel_edit.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button></a> <a href='jobLevel_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
                           </tr>
                         ";
                       }//foreach
@@ -218,7 +218,7 @@ $header = "JOB LEVEL";
     console.log("description: ", $("#description").val());
 
     //Fetch form to apply custom Bootstrap validation
-    var form = $("#createJobLevel")
+    var form = $("#createJobLevel");
     //alert(form.prop('id')) //test to ensure calling form correctly
 
         if (form[0].checkValidity() === true) {

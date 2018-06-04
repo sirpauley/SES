@@ -26,6 +26,7 @@ switch ($header) {
     break;
   case 'JOB LEVEL':
   case 'JOB LEVEL INFORMATION':
+  case 'JOB LEVEL EDIT':
     $jobLevelActive = 'active';
     break;
   case 'PHONEBOOK':

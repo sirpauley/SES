@@ -1,35 +1,20 @@
 <?php
 /*****************************************************
  *
- * Employee Edit page
+ * Phone book
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
  *
  *****************************************************/
+
 //including my DBCLASS for doing mySQL data handeling
 include_once("config/config.php");
-
-//include functions
-include_once("include/functions.php");
-$positions = JobPositionByID();
 
 //creating a new instance
 $DBCLASS = new DBCLASS();
 
-//get employ information
-$employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
-FROM employee e
-LEFT JOIN joblevel jl ON e.position_id = jl.ID
-LEFT JOIN user u on e.user_id = u.ID
-WHERE e.ID = " . $_GET['id']);
-
-$employee = $employee->fetch_assoc();
-
-	// echo "<h1>";
-	// print_r($employee);
-	// echo "</h1>";
-
+$header = "PHONEBOOK";
 
 ?>
 <!DOCTYPE html>
@@ -51,6 +36,9 @@ $employee = $employee->fetch_assoc();
   <!-- Custom styles for this template -->
   <link href="lib/medialoot/css/style.css" rel="stylesheet">
 
+  <!-- DataTables CSS-->
+  <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+
   <!-- NOTY from https://ned.im/noty-->
   <link href="lib/noty.css" rel="stylesheet">
 
@@ -61,62 +49,101 @@ $employee = $employee->fetch_assoc();
 		<div class="row">
 
       <!--Menu -->
-      <?php
-      $header = "EMPLOYEE EDIT PAGE";
-      include_once("include/menu.php");
-      ?>
+      <?php include_once("include/menu.php");  ?>
 
         <main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
 
           <!-- Header-->
-          <?php include_once("include/header.php"); ?>
+          <?php
+          //set headers text
+
+          include_once("include/header.php");
+
+          //include functions
+          include_once("include/functions.php");
+          $positions = JobPositionByID();
+          ?>
 
           <!-- Code body from here -->
-        <div class="">
-            <div class="container">
-            <form id="editEmployee" class="form-inline">
 
-                    <label for="username" class="col-3">USERNAME: </label>
-                    <input id="username" name="username" type="text" class="form-control col-3" required value="<?php echo $employee['user']; ?>" readonly></input>
+          <div class="card mb-4">
+            <div class="card-block">
+              <h3 class="card-title">LIST</h3>
+              <div class="dropdown card-title-btn-container">
 
-                    <label for="fullname" class="col-3">FULLNAME: </label>
-                    <input id="fullname" name="fullname" type="text" class="form-control col-3" required value="<?php echo $employee['fullname'] ?>"></input>
+              </div>
 
-                    <label for="surname" class="col-3">SURNAME: </label>
-                    <input id="surname" name="surname" type="text" class="form-control col-3" required value="<?php echo $employee['surname'] ?>"></input>
+              <div class="table-responsive">
+                <table id="employeeTable" class="display table table-striped">
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                      <th>SURNAME</th>
+                      <th>POSITION</th>
+                      <th>BIRTHDAY</th>
+                      <th>TELL.</th>
+                      <th>EMAIL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-                    <label for="jobleve" class="col-3">WORK POSITION: </label>
-                    <select id="joblevel" name="joblevel" class="form-control col-3" required >
-                    <option value=""> -SELECT- </option>
                     <?php
-                    foreach ($positions as $key => $value) {
-                        if($employee['position_id'] == $key){
-                            echo "<option value='" . $key . "' selected> " . $value . " </option>";
+
+                    //get all employees
+                    $employees = $DBCLASS->SELECT("employee");
+                    if(isset($employees['SQLsuccess']) != "FALSE") {
+                      foreach ($employees as $key => $value) {
+                        $name           = (!empty($value['fullname'])) ? strToUpper($value['fullname']) : "NULL";
+                        $surname        = (!empty($value['surname'])) ? strToUpper($value['surname']) : "NULL";
+
+                        $positionID = (!empty($value['position_id'])) ? $value['position_id'] : "NULL";
+                        if(array_key_exists($positionID, $positions)){
+                          $positionName = $positions[$positionID];
                         }else{
-                            echo "<option value='" . $key . "'> " . $value . " </option>";
+                          $positionName = "NULL";
                         }
 
-                    }
-                    ?>
-                    </select>
+                        $employed_date  = (!empty($value['employed_date'])) ? $value['employed_date'] : "NULL";
+                        $birthDate      = (!empty($value['birthday'])) ? $value['birthday'] : "NULL";
+                        $tell           = (!empty($value['tell'])) ? $value['tell'] : "NULL";
 
-                    <label for="employed-date" class="col-3" >EMPLOYED DATE: </label>
-                    <input id="employed-date" name="employed-date" type="date" class="form-control col-3" required value="<?php echo $employee['employed_date'] ?>"></input>
+                        $active         = (!empty($value['ACTIVE']) ) ? $value['ACTIVE'] : 0;
+                        $active         = ($value['ACTIVE'] == 1 ) ? "ACTIVE" : "NOT ACTIVE";
 
-                    <label for="birth-date" class="col-3">BIRTH DATE: </label>
-                    <input id="birth-date" name="birth-date" type="date" class="form-control col-3" required required value="<?php echo $employee['birthday'] ?>"></input>
+                        $email = ( !empty($value['email']) ) ? $value['email'] : "NULL";
 
-                    <label for="tell" class="col-3">TELLEPHONE NUMBER: </label>
-                    <input pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}" id="tell" name="tell" type="tel" class="form-control col-3" required value="<?php echo $employee['tell'] ?>"></input>
+                        echo "
+                          <tr>
+                            <td>$name</td>
+                            <td>$surname</td>
+                            <td>$positionName</td>
+                            <td>$birthDate</td>
+                            <td>$tell</td>
+                            <td>$email</td>
+                          </tr>
+                        ";
+                      }//foreach
+                    }else{
+                      echo "
+                      <tr>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                        <td>NULL</td>
+                      </tr>
+                    ";
+                    }//if
 
-                    <label for="email" class="col-3">EMAIL ADDRESS: </label>
-                    <input id="email" name="email" type="email" class="form-control col-3" required value="<?php echo $employee['email'] ?>"></input>
-                </form>
-                <br>
-                <a href="home_page.php" class="pull-left"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
-                <button onclick="editEmployee();" type="submit" class="btn btn-success pull-right"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
+                     ?>
+
+
+                  </tbody>
+                </table>
+              </div>
             </div>
-        </div>
+          </div>
 
       </main>
 
@@ -140,7 +167,10 @@ $employee = $employee->fetch_assoc();
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <!-- Data table-->
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> -->
 
   <!--noty from https://ned.im/noty-->
   <script src="lib/noty.js" type="text/javascript"></script>
@@ -148,15 +178,22 @@ $employee = $employee->fetch_assoc();
   <!--My function library for calling a standard noty function -->
   <script src="lib/noty_function.js" type="text/javascript"></script>
 
-<script>
+  <script type="text/javascript">
+
+  ( function($) {
+      // we can now rely on $ within the safety of our "bodyguard" function
+      $('#employeeTable').DataTable();
+
+  } ) ( jQuery );
+
 
 //prevent submit function to reload page
-$("#editEmployee").submit(function(e) {
+  $("#createEmployee").submit(function(e) {
     e.preventDefault();
   });
 
   //create function of employee
-  function editEmployee(){
+  function createEmployee(){
     //alert("FRIKKIE");
 
     console.log("username: ", $("#username").val());
@@ -171,32 +208,33 @@ $("#editEmployee").submit(function(e) {
     console.log("email: ", $("#email").val());
 
     //Fetch form to apply custom Bootstrap validation
-    var form = $("#editEmployee")
+    var form = $("#createEmployee")
     //alert(form.prop('id')) //test to ensure calling form correctly
     if($("#password").val() === $("#retype-password").val()){
         if (form[0].checkValidity() === true) {
 
 
           $.ajax({
-              url: "employeeEdit_json.php",
+              url: "employeeCreate_json.php",
               dataType: 'json',
               type: "POST",
               data: {
                 username        : $("#username").val(),
+                password        : $("#password").val(),
+                retype_password : $("#retype-password").val(),
                 fullname        : $("#fullname").val(),
                 surname         : $("#surname").val(),
                 joblevel        : $("#joblevel").val(),
-                employeddate    : $("#employed-date").val(),
+                employeddate      : $("#employed-date").val(),
                 birthday        : $("#birth-date").val(),
                 tell            : $("#tell").val(),
-                email           : $("#email").val(),
-                id              : "<?php echo $_GET['id'] ?>"
+                email           : $("#email").val()
               }
               }).done(function(data) {
                 console.log(data);
                   if(!data.error){
-                    notySuccess("Employee data saved!");
-                    setTimeout(function(){window.location.replace("home_page.php")}, 1500);
+                    notySuccess("New employee created!");
+                    setTimeout(function(){location.reload()}, 1500);
 
                   }else{
                     if(data.errorMessage != ''){
@@ -224,7 +262,6 @@ $("#editEmployee").submit(function(e) {
 
   </script>
 
-
 </body>
 </html>
 
@@ -232,5 +269,4 @@ $("#editEmployee").submit(function(e) {
 
 //close db connection
 $DBCLASS->close_connection();
-
-?>
+ ?>

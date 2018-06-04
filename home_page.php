@@ -14,6 +14,8 @@ include_once("config/config.php");
 //creating a new instance
 $DBCLASS = new DBCLASS();
 
+//set headers text
+$header = "EMPLOYEES";
 
 ?>
 <!DOCTYPE html>
@@ -54,8 +56,6 @@ $DBCLASS = new DBCLASS();
 
           <!-- Header-->
           <?php
-          //set headers text
-          $header = "EMPLOYEES";
           include_once("include/header.php");
 
           //include functions

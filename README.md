@@ -16,3 +16,6 @@ The idea of this project is to have a simple employee management system, with so
 
 ## Current database design
 ![data base image](img/database_design.jpg)
+
+## Notes
++ Passwords is encrypted with md5

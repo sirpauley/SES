@@ -1,27 +1,18 @@
 <?php
 /*****************************************************
  *
- * Employee Edit page
+ * Password changer/reset
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
  *
  *****************************************************/
-//including my DBCLASS for doing mySQL data handeling
-include_once("config/config.php");
 
-//creating a new instance
-$DBCLASS = new DBCLASS();
+$header = "PASSWORD UPDATE";
 
-//get job level information
-$JobLevel = $DBCLASS->SELECT('joblevel', 'ID', $_GET['id']);
-$JobLevel = $JobLevel[0];
+include_once('include/functions.php');
 
-	// echo "<h1>";
-	// print_r($employee);
-	// echo "</h1>";
-
-$header = "JOB LEVEL EDIT";
+$employeeList = EmployeeListByID();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,30 +53,35 @@ $header = "JOB LEVEL EDIT";
           <?php include_once("include/header.php"); ?>
 
           <!-- Code body from here -->
-        <div class="">
+          <div class="">
             <div class="container">
-            <form id="editJobLevel">
+            <form id="passwordReset" class="form">
 
-                    <label for="id" class="col-3">ID: </label>
-                    <input id="id" name="id" type="text" class="form-control col-3" required value="<?php echo $JobLevel['ID']; ?>" readonly></input>
+                <label for="employee" class="col-3">EMPLOYEE: </label>
+                <select id="employee" name="employee" class="form-control col-3" required >
+                <option value=""> -SELECT- </option>
+                <?php
+                foreach ($employeeList as $key => $value) {
+                    echo "<option value='" . $key . "'> " . $value . " </option>";
+                }
+                ?>
+                </select>
 
-                    <label for="joblevel" class="col-3">JOB LEVEL: </label>
-                    <input id="joblevel" name="joblevel" type="number" class="form-control col-3" required max="100" value="<?php echo $JobLevel['level'] ?>"></input>
+                <label for="oldPassword" class="col-3">OLD PASSWORD: </label>
+                <input id="oldPassword" name="oldPassword" type="password" class="form-control col-3" required></input>
 
-                    <label for="description" class="col-3">DESCRIPTION: </label>
-                    <input id="description" name="description" type="text" class="form-control col-3" required value="<?php echo $JobLevel['description'] ?>"></input>
-                    <br>
-                    <div class="row col-12">
-                      <button onclick="editJobLevel();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
-                    </div>
-                    <br>
-                    <div class=" row col-12">
-                      <a href="jobLevel.php" class="pull-left"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
-                    </div>
-                </form>
+                <label for="newPassword" class="col-3">NEW PASSWORD: </label>
+                <input id="newPassword" name="newPassword" type="password" class="form-control col-3" required></input>
 
-            </div>
-        </div>
+                <label for="newPasswordRetype" class="col-3">NEW PASSWORD RETYPE: </label>
+                <input id="newPasswordRetype" name="newPasswordRetype" type="password" class="form-control col-3" required></input>
+                
+                <div class="col-6">
+                     <br>
+                    <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>          
+                </div>
+            </form>
+        </div>        
 
       </main>
 
@@ -100,12 +96,6 @@ $header = "JOB LEVEL EDIT";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="lib/medialoot/dist/js/bootstrap.min.js"></script>
 
-  <!-- <script src="lib/medialoot/js/chart.min.js"></script>
-  <script src="lib/medialoot/js/chart-data.js"></script>
-  <script src="lib/medialoot/js/easypiechart.js"></script>
-  <script src="lib/medialoot/js/easypiechart-data.js"></script>
-  <script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
-  <script src="lib/medialoot/js/custom.js"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
@@ -120,39 +110,41 @@ $header = "JOB LEVEL EDIT";
 <script>
 
 //prevent submit function to reload page
-$("#editJobLevel").submit(function(e) {
+$("#passwordReset").submit(function(e) {
     e.preventDefault();
   });
 
-  //create function of job level edit
-  function editJobLevel(){
+  //create function of employee
+  function editEmployee(){
     //alert("FRIKKIE");
 
-    //Fetch form to apply custom Bootstrap validation
-    var form = $("#editJobLevel");
-    //alert(form.prop('id')) //test to ensure calling form correctly
+    console.log("user_id: ", $("#employee").val());
+    console.log("oldPassword: ", $("#oldPassword").val());
+    console.log("newPassword: ", $("#newPassword").val());
+    console.log("newPasswordRetype: ", $("#newPasswordRetype").val());
 
+    //Fetch form to apply custom Bootstrap validation
+    var form = $("#passwordReset")
+    //alert(form.prop('id')) //test to ensure calling form correctly
+    if($("#newPassword").val() === $("#newPasswordRetype").val()){
         if (form[0].checkValidity() === true) {
 
 
-          console.log("id: ", $("#id").val());
-          console.log("joblevel: ", $("#joblevel").val());
-          console.log("description: ", $("#description").val());
-
           $.ajax({
-              url: "jobLevel_edit_json.php",
+              url: "password_json.php",
               dataType: 'json',
               type: "POST",
               data: {
-                id          : $("#id").val(),
-                joblevel    : $("#joblevel").val(),
-                description : $("#description").val()
+                id                  : $("#employee").val(),
+                oldPassword         : $("#oldPassword").val(),
+                newPassword         : $("#newPassword").val(),
+                newPasswordRetype   : $("#newPasswordRetype").val()
               }
               }).done(function(data) {
                 console.log(data);
                   if(!data.error){
-                    notySuccess("Job level data saved!");
-                    setTimeout(function(){window.location.replace("jobLevel.php")}, 1500);
+                    notySuccess("Password Updated!");
+                    setTimeout(function(){window.location.replace("password.php")}, 1500);
 
                   }else{
                     if(data.errorMessage != ''){
@@ -170,22 +162,16 @@ $("#editJobLevel").submit(function(e) {
               });
 
 
-            }else if( $("#joblevel").val() > 100){
-              notyError("Job level can only be less/equal to 100.");
             }else{
                 notyError("Form not valid!");
             }
+          }else{
+            notyError("Password and retype Passwoord must be the same");
+          }
+          
         }//function
 
   </script>
 
-
 </body>
 </html>
-
-<?php
-
-//close db connection
-$DBCLASS->close_connection();
-
-?>

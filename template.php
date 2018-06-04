@@ -8,6 +8,7 @@
  *
  *****************************************************/
 
+$header = "HEADER";
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +41,6 @@
 
       <!--Menu -->
       <?php
-      $header = "HEADER";
       include_once("include/menu.php");
       ?>
 

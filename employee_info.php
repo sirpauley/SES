@@ -13,6 +13,9 @@
  //creating a new instance
  $DBCLASS = new DBCLASS();
 
+
+ $header = "EMPLOYEES INFORMATION";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,21 +52,20 @@
 
           <!-- Header-->
           <?php
-          $header = "EMPLOYEES INFORMATION";
           include_once("include/header.php");
           ?>
 
           <!-- Code body from here -->
           <?php
-          //get employ information
-          $employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
-          FROM employee e 
-          LEFT JOIN joblevel jl ON e.position_id = jl.ID
-          LEFT JOIN user u on e.user_id = u.ID 
-          WHERE e.ID = " . $_GET['id']);
-          
-          $employee = $employee->fetch_assoc();
-          // print_r($employee);
+            //get employ information
+            $employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
+            FROM employee e 
+            LEFT JOIN joblevel jl ON e.position_id = jl.ID
+            LEFT JOIN user u on e.user_id = u.ID 
+            WHERE e.ID = " . $_GET['id']);
+            
+            $employee = $employee->fetch_assoc();
+            // print_r($employee);
             printf(
               "<div class='row'>".
                 "<div class='col'><h4>Name:</h4> %s</div>" .

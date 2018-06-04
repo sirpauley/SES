@@ -33,5 +33,23 @@ function JobPositionByID(){
   $DBCLASSJob->close_connection();
 }
 
+function EmployeeListByID(){
+    //creating a new instance
+    $DBCLASSEmployees = new DBCLASS();
 
- ?>
+    //get all position in company
+    $employees = $DBCLASSEmployees->SELECT("user");
+  
+    $employeesList = array();
+  
+    if(isset($employees['SQLsuccess']) != "FASLE"){
+      foreach ($employees as $key => $value) {
+        $employeesList[$value['ID']] = StrToUpper($value['user']);
+      }
+    }
+    return $employeesList;
+  
+    $DBCLASSEmployees->close_connection();
+}
+
+?>

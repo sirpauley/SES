@@ -19,6 +19,7 @@ $passwordActive = '';
 switch ($header) {
   case 'EMPLOYEES':
   case 'EMPLOYEE EDIT PAGE':
+  case 'EMPLOYEES INFORMATION':
     $employeeActive = 'active';
     break;
   case 'STATISTICS':
@@ -32,6 +33,9 @@ switch ($header) {
   case 'PHONEBOOK':
     $phoneBookActive = 'active';
     break;
+  case 'PASSWORD UPDATE':
+    $passwordActive = 'active';
+    break;  
 }
 
 ?>
@@ -45,7 +49,7 @@ switch ($header) {
     <li class="nav-item"><a class="nav-link <?php echo $jobLevelActive; ?>" href="jobLevel.php"><em class="fa fa-bar-chart"></em> Job level</a></li>
     <li class="nav-item"><a class="nav-link <?php echo $phoneBookActive; ?>" href="phonebook.php"><em class="fa fa-phone-square"></em> Phone book</a></li>
     <li class="nav-item"><a class="nav-link <?php echo $reviewActive; ?>" href="forms.html"><em class="fa fa-pencil-square-o"></em> Leave a review</a></li>
-    <li class="nav-item"><a class="nav-link <?php echo $passwordActive; ?>" href="cards.html"><em class="fa fa-clone"></em> Passwords</a></li>
+    <li class="nav-item"><a class="nav-link <?php echo $passwordActive; ?>" href="password.php"><em class="fa fa-clone"></em> Password</a></li>
   </ul>
   <a href="login.html" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
 </nav>

@@ -7,9 +7,14 @@
  * email: sirpauley@gmail.com
  *
  *****************************************************/
+
 //including my DBCLASS for doing mySQL data handeling
 include("config/config.php");
-$header = "HEADER";
+
+//creating a new instance
+$DBCLASS = new DBCLASS();
+
+$header = "PROFILE";
 
 ?>
 <!DOCTYPE html>
@@ -51,8 +56,50 @@ $header = "HEADER";
           <?php include_once("include/header.php"); ?>
 
           <!-- Code body from here -->
-          <h1>Hallo</h1>
+					<?php
+            //get employ information
+            $employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
+            FROM employee e
+            LEFT JOIN joblevel jl ON e.position_id = jl.ID
+            LEFT JOIN user u on e.user_id = u.ID
+            WHERE e.user_id = " . $_SESSION['USER_ID']);
 
+            $employee = $employee->fetch_assoc();
+            // print_r($employee);
+            printf(
+              "<div class='row'>".
+                "<div class='col'><h4>Name:</h4> %s</div>" .
+                "<div class='col'><h4>Surname:</h4> %s</div>" .
+                "<div class='col'><h4>Username:</h4> %s</div>" .
+              "</div>".
+              "<br>" .
+              "<div class='row'>" .
+                "<div class='col'><h4>Employeed date:</h4> %s</div>" .
+                "<div class='col'><h4>Birthday:</h4> %s</div>" .
+                "<div class='col'><h4>Tell:</h4> %s</div>" .
+              "</div>".
+              "<br>".
+              "<div class='row'>" .
+                "<div class='col'><h4>Email address:</h4> %s</div>" .
+                "<div class='col'><h4>Job description:</h4> %s</div>" .
+                "<div class='col'><h4>Active:</h4> %s</div>".
+              "</div>",
+              $employee['fullname'],
+              $employee['surname'],
+              $employee['user'],
+              $employee['employed_date'],
+              $employee['birthday'],
+              $employee['tell'],
+              $employee['email'],
+              $employee['description'],
+              $active = ($employee['surname'] == true) ? "ACTIVE" : "NON-ACTIVE"
+            );
+          ?>
+
+        <br>
+        <div class='row'>
+          <div class='col'><a href="home_page.php"><button class="btn btn-info"><em class="fa fa-user"></em> EMPLOYEES</button></a></div>
+        </div>
       </main>
 
     </div>

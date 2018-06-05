@@ -17,5 +17,14 @@ The idea of this project is to have a simple employee management system, with so
 ## Current database design
 ![data base image](img/database_design.jpg)
 
+## Resetting a user password
+1. Currently any user should login
+2. Go to 'PASSWORD'
+3. Select the user in 'employee' select box
+4. Type in 'OLD PASSWORD'
+5. Type in 'NEW PASSWORD'
+6. Type in 'NEW PASSWORD RETYPE' same as new password
++ If user forgot his/her old password type in 'OLD PASSWORD' the word 'RESET' all uppercase
+
 ## Notes
 + Passwords is encrypted with md5

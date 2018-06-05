@@ -31,8 +31,8 @@ if(!$error){
 
   $employeeData = array(
                   'user_id'       => $userID,
-                  'fullname'      => $_POST['fullname'],
-                  'surname'       => $_POST['surname'],
+                  'fullname'      => ucfirst($_POST['fullname']),
+                  'surname'       => ucfirst($_POST['surname']),
                   'position_id'   => $_POST['joblevel'],
                   'employed_date' => $_POST['employeddate'],
                   'birthday'      => $_POST['birthday'],

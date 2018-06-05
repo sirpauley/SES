@@ -74,14 +74,18 @@ $header = "JOB LEVEL EDIT";
 
                     <label for="description" class="col-3">DESCRIPTION: </label>
                     <input id="description" name="description" type="text" class="form-control col-3" required value="<?php echo $JobLevel['description'] ?>"></input>
-                    <br>
-                    <div class="row col-12">
+
+										<br>
+
+										<div class="row col-12">
                       <button onclick="editJobLevel();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
                     </div>
                     <br>
-                    <div class=" row col-12">
+
+										<div class=" row col-12">
                       <a href="jobLevel.php" class="pull-left"><button type="button" class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
                     </div>
+
                 </form>
 
             </div>

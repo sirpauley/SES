@@ -27,15 +27,17 @@ $errorMessage = "";
 $userData = $DBCLASSpassword->SELECT('user', 'ID', $_POST['id']);
 $userData = $userData[0];
 
-//old password 
+//old password
 $oldPassword = md5($_POST['oldPassword']);
 
 //new Password
 $newPassword = md5($_POST['newPassword']);
 
-if($userData['password'] !== $oldPassword){
-    $error = true;
-    $errorMessage = "Old password doesn't match!";
+if($_POST['oldPassword'] !== "RESET"){
+  if($userData['password'] !== $oldPassword){
+      $error = true;
+      $errorMessage = "Old password doesn't match!";
+  }
 }
 
 if(!$error){

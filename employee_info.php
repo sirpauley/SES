@@ -13,7 +13,6 @@
  //creating a new instance
  $DBCLASS = new DBCLASS();
 
-
  $header = "EMPLOYEES INFORMATION";
 
 ?>
@@ -59,11 +58,11 @@
           <?php
             //get employ information
             $employee = $DBCLASS->CUSTOM("SELECT e.*, jl.description, u.user
-            FROM employee e 
+            FROM employee e
             LEFT JOIN joblevel jl ON e.position_id = jl.ID
-            LEFT JOIN user u on e.user_id = u.ID 
+            LEFT JOIN user u on e.user_id = u.ID
             WHERE e.ID = " . $_GET['id']);
-            
+
             $employee = $employee->fetch_assoc();
             // print_r($employee);
             printf(
@@ -79,7 +78,7 @@
                 "<div class='col'><h4>Tell:</h4> %s</div>" .
               "</div>".
               "<br>".
-              "<div class='row'>" .                
+              "<div class='row'>" .
                 "<div class='col'><h4>Email address:</h4> %s</div>" .
                 "<div class='col'><h4>Job description:</h4> %s</div>" .
                 "<div class='col'><h4>Active:</h4> %s</div>".
@@ -97,7 +96,7 @@
           ?>
 
         <br>
-        <div class='row'>                
+        <div class='row'>
           <div class='col'><a href="home_page.php"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a></div>
         </div>
 

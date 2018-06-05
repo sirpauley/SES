@@ -35,12 +35,12 @@ switch ($header) {
     break;
   case 'PASSWORD UPDATE':
     $passwordActive = 'active';
-    break;  
+    break;
 }
 
 ?>
 <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
-  <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> SES</a></h1>
+  <h1 class="site-title"><a href="home_page.php"><em class="fa fa-rocket"></em> SES</a></h1>
 
   <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
   <ul class="nav nav-pills flex-column sidebar-nav">
@@ -51,5 +51,5 @@ switch ($header) {
     <li class="nav-item"><a class="nav-link <?php echo $reviewActive; ?>" href="forms.html"><em class="fa fa-pencil-square-o"></em> Leave a review</a></li>
     <li class="nav-item"><a class="nav-link <?php echo $passwordActive; ?>" href="password.php"><em class="fa fa-clone"></em> Password</a></li>
   </ul>
-  <a href="login.html" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
+  <a href="logOut.php" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
 </nav>

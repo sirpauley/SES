@@ -113,14 +113,14 @@ $employee = $employee->fetch_assoc();
               <input id="email" name="email" type="email" class="form-control col-3" required value="<?php echo $employee['email'] ?>"></input>
               <br>
 
-              <div class="col-6">
+              <div class="col-12">
               <br>
                 <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o "></em>SAVE DATA</button>
               </div>
 
-              <div class="col-6">
+              <div class="col-12">
               <br>
-                <a href="home_page.php" class="pull-right"><button type="button" class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
+                <a href="home_page.php" class="pull-left"><button type="button" class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
               </div>
 
             </form>

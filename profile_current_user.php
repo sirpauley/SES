@@ -1,7 +1,7 @@
 <?php
 /*****************************************************
  *
- * Template
+ * Current user profile view
  *
  * author: sirPauley
  * email: sirpauley@gmail.com

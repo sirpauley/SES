@@ -239,7 +239,8 @@ $header = "EMPLOYEES";
 
                   </tbody>
                 </table>
-              </div>
+              </div><!-- table div -->
+							
             </div>
           </div>
 

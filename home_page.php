@@ -185,7 +185,6 @@ $header = "EMPLOYEES";
                   <tbody>
 
                     <?php
-
                     //get all employees
                     $employees = $DBCLASS->SELECT("employee");
                     if(isset($employees['SQLsuccess']) != "FALSE") {

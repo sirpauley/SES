@@ -80,7 +80,7 @@ $header = "JOB LEVEL EDIT";
                     </div>
                     <br>
                     <div class=" row col-12">
-                      <a href="jobLevel.php" class="pull-left"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
+                      <a href="jobLevel.php" class="pull-left"><button type="button" class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
                     </div>
                 </form>
 

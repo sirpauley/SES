@@ -71,6 +71,9 @@
                       console.log(data);
                         if(data.login_success){
                           notySuccess("welcome!");
+
+                          //relocate after succesful login
+                          setTimeout(function(){window.location.replace("home_page.php")}, 1500);
                         }else{
                           notyError("Username/Password does not match.");
                         }

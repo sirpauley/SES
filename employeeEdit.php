@@ -117,10 +117,10 @@ $employee = $employee->fetch_assoc();
               <br>
                 <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o "></em>SAVE DATA</button>
               </div>
-              
+
               <div class="col-6">
-              <br>  
-                <a href="home_page.php" class="pull-right"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
+              <br>
+                <a href="home_page.php" class="pull-right"><button type="button" class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
               </div>
 
             </form>

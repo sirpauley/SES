@@ -8,6 +8,8 @@
  *
  *****************************************************/
 
+//including my DBCLASS for doing mySQL data handeling
+include_once("config/config.php");
 $header = "STATISTICS";
 
 ?>
@@ -41,7 +43,6 @@ $header = "STATISTICS";
 
       <!--Menu -->
       <?php
-
       include_once("include/menu.php");
       ?>
 

@@ -8,6 +8,9 @@
  * email: sirpauley@gmail.com
  *
  ******************************************************************************/
+//start session
+session_start();
+
 //Login default value
 $returnData["login_success"] = false;
 
@@ -28,6 +31,13 @@ $user_password = isset($user['password']) ? $user['password'] : "";
 //Test login password entered agains password on the database
 if($password_entered === $user['password'] ){
   $returnData["login_success"] = true;
+
+  //set login session
+  $_SESSION['LAST_ACTIVITY']   = $time;
+  $_SESSION['USER'] = $user['user'];
+  $_SESSION['USER_ID'] = $user['ID'];
+
+
 }else{
   $returnData["login_success"] = false;
 }

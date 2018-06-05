@@ -138,7 +138,7 @@ $header = "EMPLOYEES";
 
                           <div class="form-group">
                             <label for="tell">Tellephone number: </label>
-                            <input pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}" id="tell" name="tell" type="tel" class="form-control" required></input>
+                            <input pattern="(^0[1-9][0-9]{8})" id="tell" name="tell" type="tel" class="form-control" required></input>
                           </div>
 
                           <div class="form-group">
@@ -177,7 +177,7 @@ $header = "EMPLOYEES";
                       <th>POSITION</th>
                       <th>EMPLOYED DATE</th>
                       <th>BIRTHDAY</th>
-                      <th>TELL.</th>
+                      <th>TELEPHONE</th>
                       <th>STATUS</th>
                       <th>CONTROL</th>
                     </tr>

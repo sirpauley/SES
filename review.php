@@ -75,7 +75,7 @@ $DBCLASS = new DBCLASS();
                                 <th>SURNAME</th>
                                 <th>EMPLOYED DATE</th>
                                 <th>BIRTHDAY</th>
-                                <th>TELL.</th>
+                                <th>TELEPHONE</th>
                                 <th>LIKE</th>
                                 <th>CONTROL</th>
                               </tr>

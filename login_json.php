@@ -8,8 +8,6 @@
  * email: sirpauley@gmail.com
  *
  ******************************************************************************/
-//start session
-session_start();
 
 //Login default value
 $returnData["login_success"] = false;

@@ -81,7 +81,7 @@ $header = "PHONEBOOK";
                       <th>SURNAME</th>
                       <th>POSITION</th>
                       <th>BIRTHDAY</th>
-                      <th>TELL.</th>
+                      <th>TELEPHONE</th>
                       <th>EMAIL</th>
                     </tr>
                   </thead>

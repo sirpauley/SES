@@ -106,8 +106,8 @@ $employee = $employee->fetch_assoc();
               <label for="birth-date" class="col-3">BIRTH DATE: </label>
               <input id="birth-date" name="birth-date" type="date" class="form-control col-3" required required value="<?php echo $employee['birthday'] ?>"></input>
 
-              <label for="tell" class="col-3">TELLEPHONE NUMBER: </label>
-              <input pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}" id="tell" name="tell" type="tel" class="form-control col-3" required value="<?php echo $employee['tell'] ?>"></input>
+              <label for="tell" class="col-3">TELEPHONE NUMBER: </label>
+              <input pattern="(^0[1-9][0-9]{8})" id="tell" name="tell" type="tel" class="form-control col-3" required value="<?php echo $employee['tell'] ?>"></input>
 
               <label for="email" class="col-3">EMAIL ADDRESS: </label>
               <input id="email" name="email" type="email" class="form-control col-3" required value="<?php echo $employee['email'] ?>"></input>

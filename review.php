@@ -5,7 +5,7 @@
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
- *
+ *test
  *****************************************************/
 //including my DBCLASS for doing mySQL data handeling
 include("config/config.php");

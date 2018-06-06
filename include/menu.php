@@ -53,6 +53,6 @@ switch ($header) {
     <li class="nav-item"><a class="nav-link <?php echo $phoneBookActive; ?>" href="phonebook.php"><em class="fa fa-phone-square"></em> Phone book</a></li>
     <li class="nav-item"><a class="nav-link <?php echo $reviewActive; ?>" href="review.php"><em class="fa fa-pencil-square-o"></em> Leave a review</a></li>
     <li class="nav-item"><a class="nav-link <?php echo $passwordActive; ?>" href="password.php"><em class="fa fa-clone"></em> Password</a></li>
+    <a href="logOut.php" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
   </ul>
-  <a href="logOut.php" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
 </nav>

@@ -76,17 +76,18 @@ $employee = $employee->fetch_assoc();
             <div class="container">
             <form id="editEmployee" class="form-inline">
 
-              <label for="username" class="col-3">USERNAME: </label>
-              <input id="username" name="username" type="text" class="form-control col-3" required value="<?php echo $employee['user']; ?>" readonly></input>
+              <label for="username" class="col-sm-6 col-md-3">USERNAME: </label>
+              <input id="username" name="username" type="text" class="form-control col-sm-6 col-md-3 " required value="<?php echo $employee['user']; ?>" readonly></input>
 
-              <label for="fullname" class="col-3">FULLNAME: </label>
-              <input id="fullname" name="fullname" type="text" class="form-control col-3" required value="<?php echo $employee['fullname'] ?>"></input>
+              <label for="fullname" class="col-sm-6 col-md-3">FULLNAME: </label>
+              <input id="fullname" name="fullname" type="text" class="form-control col-s-6 col-md-3 " required value="<?php echo $employee['fullname'] ?>"></input>
 
-              <label for="surname" class="col-3">SURNAME: </label>
-              <input id="surname" name="surname" type="text" class="form-control col-3" required value="<?php echo $employee['surname'] ?>"></input>
+              <label for="surname" class="col-sm-6 col-md-3">SURNAME: </label>
+              <input id="surname" name="surname" type="text" class="form-control col-sm-6 col-md-3" required value="<?php echo $employee['surname'] ?>"></input>
 
-              <label for="jobleve" class="col-3">WORK POSITION: </label>
-              <select id="joblevel" name="joblevel" class="form-control col-3" required >
+              <label for="jobleve" class="col-sm-6 col-md-3">WORK POSITION: </label>
+              <select id="joblevel" name="joblevel" class="form-control col-sm-6 col-md-3" required >
+
               <option value=""> -SELECT- </option>
               <?php
               foreach ($positions as $key => $value) {
@@ -100,25 +101,25 @@ $employee = $employee->fetch_assoc();
               ?>
               </select>
 
-              <label for="employed-date" class="col-3" >EMPLOYED DATE: </label>
-              <input id="employed-date" name="employed-date" type="date" class="form-control col-3" required value="<?php echo $employee['employed_date'] ?>"></input>
+              <label for="employed-date" class="col-sm-6 col-md-3" >EMPLOYED DATE: </label>
+              <input id="employed-date" name="employed-date" type="date" class="form-control col-sm-6 col-md-3" required value="<?php echo $employee['employed_date'] ?>"></input>
 
-              <label for="birth-date" class="col-3">BIRTH DATE: </label>
-              <input id="birth-date" name="birth-date" type="date" class="form-control col-3" required required value="<?php echo $employee['birthday'] ?>"></input>
+              <label for="birth-date" class="col-sm-6 col-md-3">BIRTH DATE: </label>
+              <input id="birth-date" name="birth-date" type="date" class="form-control col-sm-6 col-md-3" required required value="<?php echo $employee['birthday'] ?>"></input>
 
-              <label for="tell" class="col-3">TELEPHONE NUMBER: </label>
-              <input pattern="(^0[1-9][0-9]{8})" id="tell" name="tell" type="tel" class="form-control col-3" required value="<?php echo $employee['tell'] ?>"></input>
+              <label for="tell" class="col-sm-6 col-md-3">TELEPHONE NUMBER: </label>
+              <input pattern="(^0[1-9][0-9]{8})" id="tell" name="tell" type="tel" class="form-control col-sm-6 col-md-3" required value="<?php echo $employee['tell'] ?>"></input>
 
-              <label for="email" class="col-3">EMAIL ADDRESS: </label>
-              <input id="email" name="email" type="email" class="form-control col-3" required value="<?php echo $employee['email'] ?>"></input>
+              <label for="email" class="col-sm-6 col-md-3">EMAIL ADDRESS: </label>
+              <input id="email" name="email" type="email" class="form-control col-sm-6 col-md-3" required value="<?php echo $employee['email'] ?>"></input>
               <br>
 
-              <div class="col-12">
+              <div class="col-md-12">
               <br>
                 <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o "></em>SAVE DATA</button>
               </div>
 
-              <div class="col-12">
+              <div class="col-md-12">
               <br>
                 <a href="home_page.php" class="pull-left"><button type="button" class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a>
               </div>
@@ -140,12 +141,8 @@ $employee = $employee->fetch_assoc();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="lib/medialoot/dist/js/bootstrap.min.js"></script>
 
-  <!-- <script src="lib/medialoot/js/chart.min.js"></script>
-  <script src="lib/medialoot/js/chart-data.js"></script>
-  <script src="lib/medialoot/js/easypiechart.js"></script>
-  <script src="lib/medialoot/js/easypiechart-data.js"></script>
-  <script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
-  <script src="lib/medialoot/js/custom.js"></script> -->
+	<script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
+  <script src="lib/medialoot/js/custom.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 

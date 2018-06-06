@@ -240,7 +240,7 @@ $header = "EMPLOYEES";
                   </tbody>
                 </table>
               </div><!-- table div -->
-							
+
             </div>
           </div>
 
@@ -260,9 +260,9 @@ $header = "EMPLOYEES";
   <!-- <script src="lib/medialoot/js/chart.min.js"></script>
   <script src="lib/medialoot/js/chart-data.js"></script>
   <script src="lib/medialoot/js/easypiechart.js"></script>
-  <script src="lib/medialoot/js/easypiechart-data.js"></script>
+  <script src="lib/medialoot/js/easypiechart-data.js"></script>-->
   <script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
-  <script src="lib/medialoot/js/custom.js"></script> -->
+  <script src="lib/medialoot/js/custom.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 

@@ -6,6 +6,7 @@ The idea of this project is to have a simple employee management system, with so
 ## Setup
 1. Setup a database in mysql with the database name as 'ses' and run the script in the setup folder "table.sql"
 2. Go to the folder config, edit the database connection settings
+3. After database setup and Tables created, import /setup/admin_user.sql to have and administrator login (user: admin ; Password: admin)
 
 ## External libraries used
 + noty [https://ned.im/noty]
@@ -24,7 +25,8 @@ The idea of this project is to have a simple employee management system, with so
 4. Type in 'OLD PASSWORD'
 5. Type in 'NEW PASSWORD'
 6. Type in 'NEW PASSWORD RETYPE' same as new password
-+ If user forgot his/her old password type in 'OLD PASSWORD' the word 'RESET' all uppercase
++ If user forgot his/her old password type in 'OLD PASSWORD' the word 'RESET' all uppercase, then the new password in the other 2 password boxes
 
 ## Notes
 + Passwords is encrypted with md5
++ Login expires in 30 minutes

@@ -5,7 +5,7 @@
  *
  * author: sirPauley
  * email: sirpauley@gmail.com
- *test
+ *
  *****************************************************/
 //including my DBCLASS for doing mySQL data handeling
 include("config/config.php");
@@ -77,7 +77,7 @@ $DBCLASS = new DBCLASS();
                                 <th>BIRTHDAY</th>
                                 <th>TELEPHONE</th>
                                 <th>LIKE</th>
-                                <th>CONTROL</th>
+                                <th>REVIEW</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -128,7 +128,7 @@ $DBCLASS = new DBCLASS();
                                     echo "<td><button id='" . $value['ID'] . "' onclick='liked(" . $value['ID'] . ");' class='btn btn-circle btn-secondary'><em class='fa fa-thumbs-o-up'></em></button></td>";
                                   }
 
-                                  echo "<td><a href='employee_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>
+                                  echo "<td><a href='review_employee.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-success'><em class='fa fa-envelope-o'></em></button></a> </td>
                                     </tr>
                                   ";
                                 }//foreach
@@ -171,6 +171,9 @@ $DBCLASS = new DBCLASS();
   <script src="lib/medialoot/dist/js/bootstrap.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+	<script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
+  <script src="lib/medialoot/js/custom.js"></script>
 
   <!-- Data table-->
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

@@ -75,13 +75,13 @@ $employeeList = EmployeeListByID();
 
                 <label for="newPasswordRetype" class="col-3">NEW PASSWORD RETYPE: </label>
                 <input id="newPasswordRetype" name="newPasswordRetype" type="password" class="form-control col-3" required></input>
-                
+
                 <div class="col-6">
                      <br>
-                    <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>          
+                    <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
                 </div>
             </form>
-        </div>        
+        </div>
 
       </main>
 
@@ -96,6 +96,8 @@ $employeeList = EmployeeListByID();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="lib/medialoot/dist/js/bootstrap.min.js"></script>
 
+	<script src="lib/medialoot/js/bootstrap-datepicker.js"></script>
+  <script src="lib/medialoot/js/custom.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
@@ -168,7 +170,7 @@ $("#passwordReset").submit(function(e) {
           }else{
             notyError("Password and retype Passwoord must be the same");
           }
-          
+
         }//function
 
   </script>

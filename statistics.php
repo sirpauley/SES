@@ -128,26 +128,58 @@ include_once("include/functions.php");
 						echo "</div>";
 					}
 
+					echo "<br>";
+
+					echo "<h1> Some statistics</h1>";
+					echo "<div class='row'>";
+
 					/************************************************************************************************
 					* Total number of emloyees
 					************************************************************************************************/
 					$TotalEmployees = $DBCLASS->CUSTOM("SELECT * FROM employee");
-					printf("<div class='col-12'><h4>Total number of employees: </h4>%s</div>", $TotalEmployees->num_rows);
+					printf("<div class='col-sx-12 col-md-4'>
+											<div class='card md-12 " . $colorArray[5] . "' >
+												<h5 class='card-header'>" . "Total employees" . "</h5>
+												<div class='card-body'>
+														<p class='card-text'><h1>%s</h1></p>
+														</div>
+											</div>
+										</div>
+										", $TotalEmployees->num_rows);
 					//print_r($TotalEmployees);
 
 					/************************************************************************************************
 					* Total COMMENTS
 					************************************************************************************************/
 					$TotalComments = $DBCLASS->CUSTOM("SELECT * FROM review");
-					printf("<div class='col-12'><h4>Total number of REVIEWS: </h4>%s</div>", $TotalComments->num_rows);
+					printf("<div class='col-sx-12 col-md-4'>
+											<div class='card md-12 " . $colorArray[5] . "' >
+												<h5 class='card-header'>" . "Total REVIEWS" . "</h5>
+												<div class='card-body'>
+														<p class='card-text'><h1>%s</h1></p>
+														</div>
+											</div>
+										</div>
+										", $TotalComments->num_rows);
 					//print_r($TotalComments);
 
 					/************************************************************************************************
 					* Total Likes
 					************************************************************************************************/
 					$TotalLikes = $DBCLASS->CUSTOM("SELECT * FROM likes");
-					printf("<div class='col-12'><h4>Total number of LIKES: </h4>%s</div>", $TotalLikes->num_rows);
+					//printf("<div class='col-12'><h4>Total number of LIKES: </h4>%s<br><br></div>", $TotalLikes->num_rows);
+					printf("<div class='col-sx-12 col-md-4'>
+											<div class='card md-12 " . $colorArray[5] . "' >
+												<h5 class='card-header'>" . "Total LIKES" . "</h5>
+												<div class='card-body'>
+														<p class='card-text'><h1>%s</h1></p>
+														</div>
+											</div>
+										</div>
+										", $TotalLikes->num_rows);
 					//print_r($TotalLikes);
+
+					echo "</div>";
 
 					echo "<br>";
 

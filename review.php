@@ -128,7 +128,7 @@ $DBCLASS = new DBCLASS();
                                     echo "<td><button id='" . $value['ID'] . "' onclick='liked(" . $value['ID'] . ");' class='btn btn-circle btn-secondary'><em class='fa fa-thumbs-o-up'></em></button></td>";
                                   }
 
-                                  echo "<td><a href='review_employee.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-success'><em class='fa fa-envelope-o'></em></button></a> </td>
+                                  echo "<td><a href='review_employee.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-success'><em class='fa fa fa-comments'></em></button></a> </td>
                                     </tr>
                                   ";
                                 }//foreach

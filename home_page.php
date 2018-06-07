@@ -88,7 +88,7 @@ $header = "EMPLOYEES";
                       <!-- Modal body -->
                       <div class="modal-body">
 
-                        <form id="createEmployee" >
+                        <form id="createEmployee" autocomplete="off">
                           <div class="form-group">
                             <label for="username">Username: </label>
                             <input id="username" name="username" type="text" class="form-control" required></input>

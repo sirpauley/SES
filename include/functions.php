@@ -11,8 +11,9 @@
  //including my DBCLASS for doing mySQL data handeling
  include_once("config/config.php");
 
-
- //function for JobLevel descriptions by IDs
+ /************************************************************************************************
+ * function for JobLevel descriptions by IDs
+ ************************************************************************************************/
 function JobPositionByID(){
 
   //creating a new instance
@@ -33,23 +34,51 @@ function JobPositionByID(){
   $DBCLASSJob->close_connection();
 }
 
-function EmployeeListByID(){
+/************************************************************************************************
+* function for Users list by IDs
+************************************************************************************************/
+function UserListByID(){
     //creating a new instance
-    $DBCLASSEmployees = new DBCLASS();
+    $DBCLASSuser = new DBCLASS();
 
     //get all position in company
-    $employees = $DBCLASSEmployees->SELECT("user");
-  
-    $employeesList = array();
-  
+    $user = $DBCLASSuser->SELECT("user");
+
+    $user = array();
+
     if(isset($employees['SQLsuccess']) != "FASLE"){
       foreach ($employees as $key => $value) {
-        $employeesList[$value['ID']] = StrToUpper($value['user']);
+        $user[$value['ID']] = StrToUpper($value['user']);
       }
     }
-    return $employeesList;
-  
-    $DBCLASSEmployees->close_connection();
+
+    $DBCLASSuser->close_connection();
+
+    return $user;
+}
+
+/************************************************************************************************
+* function for Users list by IDs
+************************************************************************************************/
+Function EmployeeListByID(){
+
+  //creating a new instance
+  $DBCLASSEmployees = new DBCLASS();
+
+  //get all position in company
+  $employees = $DBCLASSEmployees->SELECT("employee");
+
+  $employeesList = array();
+
+  if(isset($employees['SQLsuccess']) != "FASLE"){
+    foreach ($employees as $key => $value) {
+      $employeesList[$value['ID']] = StrToUpper($value['fullname']) . " " . StrToUpper($value['surname']);
+    }
+  }
+
+  $DBCLASSEmployees->close_connection();
+
+  return $employeesList;
 }
 
 ?>

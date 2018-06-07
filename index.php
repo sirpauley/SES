@@ -70,17 +70,17 @@
                     }).done(function(data) {
                       console.log(data);
                         if(data.login_success){
-                          notySuccess("welcome!");
+                          notySuccess("WELCOME!");
 
                           //relocate after succesful login
                           setTimeout(function(){window.location.replace("home_page.php")}, 1500);
                         }else{
-                          notyError("Username/Password does not match.");
+                          notyError("USERNAME/PASSWORD DOES NOT MATCH");
                         }
 
                     }).fail(function() {
 
-                        notyError("Database error, Please contact IT Support");
+                        notyError("DATABASE ERROR, PLEASE CONTACT IT SUPPORT");
 
                     });
                 //notySuccess("Login!!", true);

@@ -23,6 +23,11 @@ WHERE e.ID = " . $_GET['id']);
 
 $employee = $employee->fetch_assoc();
 
+//including my DBCLASS for doing mySQL data handeling
+include_once("include/functions.php");
+
+$employees = EmployeeListByID();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,9 +93,13 @@ $employee = $employee->fetch_assoc();
           <div class="container" >
             <?php
               //creat review cards from database
-              $reviews = $DBCLASS->SELECT('review', 'employee_id', $_GET['id'] );
+              $reviews = $DBCLASS->CUSTOM("SELECT * FROM review WHERE employee_id ='" . $_GET['id'] . "' ORDER BY comment_date" );
+							//$reviews = $reviews->fetch_assoc();
+							while($row = $reviews->fetch_assoc()) {
+					         $ReviewArray[] = $row;
+					    }
 
-              //print_r($reviews);
+							//print_r($ReviewArray);
 
               //random card color array
               $colorArray = array('text-white bg-primary mb-3',
@@ -102,9 +111,10 @@ $employee = $employee->fetch_assoc();
                                   'bg-light',
                                   'text-white bg-dark');
 
-              if(isset($reviews) && $reviews['SQLsuccess'] !== 'FALSE'){
+              if(isset($ReviewArray) && $ReviewArray['SQLsuccess'] !== 'FALSE'){
 
-                foreach ($reviews as $key => $value) {
+
+                foreach ($ReviewArray as $key => $value) {
 
                   //random class color
                   $randomNum = rand(0, 7);
@@ -118,6 +128,7 @@ $employee = $employee->fetch_assoc();
                     <div class='card md-3 " . $colorArray[$randomNum] . "' >
                       <h5 class='card-header'>" . $value['comment_date'] . "</h5>
                       <div class='card-body'>
+											<h5 class='card-title'>" .$employees[$value['employee_id']] . "</h5>
                         <p class='card-text'>" . $value['comment'] . "</p>
                       </div>
                     </div>
@@ -134,6 +145,7 @@ $employee = $employee->fetch_assoc();
                 echo "</div>";
                 echo "<br>";
               }
+
             ?>
         </div>
 

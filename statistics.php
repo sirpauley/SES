@@ -12,6 +12,12 @@
 include_once("config/config.php");
 $header = "STATISTICS";
 
+//creating a new instance
+$DBCLASS = new DBCLASS();
+
+//include functions
+include_once("include/functions.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +58,151 @@ $header = "STATISTICS";
           <?php include_once("include/header.php"); ?>
 
           <!-- Code body from here -->
-          <h1>Hallo</h1>
+					<?php
+
+					/************************************************************************************************
+					* birthdays this month
+					************************************************************************************************/
+					$Birthdays = $DBCLASS->CUSTOM("SELECT * FROM employee WHERE MONTH(birthday) ='" . date('m') . "' ORDER BY DAY(birthday) ASC");
+					//print_r($Birthdays);
+
+					while($row = $Birthdays->fetch_assoc()) {
+						$BirthdayArray[] = $row;
+					}
+
+					$colorArray = array(
+															'text-white bg-primary mb-3', 	//0
+															'text-white bg-secondary',			//1
+															'text-white bg-success',				//2
+															'text-white bg-danger',					//3
+															'text-white bg-warning',				//4
+															'text-white bg-info',						//5
+															'bg-light',											//6
+															'text-white bg-dark' 						//7
+														);
+
+					if(isset($BirthdayArray) && $BirthdayArray['SQLsuccess'] !== 'FALSE'){
+						echo "<h2>UPCOMMING BIRTHDAYS</h2>";
+						foreach ($BirthdayArray as $key => $value) {
+
+							if($key == 0){
+								echo "<div class='row'>";
+							}
+
+							//Employe birthday date convert to ddmm format for better testing
+							$time = strtotime($value['birthday']);
+							$birthday = date("dm", $time);
+
+							//gettting date today
+							//format ddmm(day month)
+							$today = date("dm");
+
+							if($birthday === $today){
+								$colorCardClass = $colorArray[3];
+								$employeeNamePreText = "Happy birthday";
+							}else{
+								$colorCardClass = $colorArray[1];
+								$employeeNamePreText = "EMPLOYEE NAME";
+							}
+
+
+							echo "
+							<div class='col-sx-12 col-md-4'>
+								<div class='card md-3 " . $colorCardClass . "' >
+									<h5 class='card-header'>" . $value['birthday'] . "</h5>
+									<div class='card-body'>
+										<h5 class='card-title'>" . $employeeNamePreText .": " . $value['fullname'] . " " . $value['surname'] . "</h5>
+										<p class='card-text'>TELEPHONE: " . $value['tell'] . "</p>
+										<p class='card-text'>EMAIL: " . $value['email'] . "</p>
+									</div>
+								</div>
+							</div>
+							";
+
+							if( ($key+1)%3 == 0 ){
+								echo "</div>";
+								echo "<br>";
+								echo "<div class='row'>";
+							}
+
+						}//for
+						echo "</div>";
+						echo "<br>";
+					}
+
+					/************************************************************************************************
+					* Total number of emloyees
+					************************************************************************************************/
+					$TotalEmployees = $DBCLASS->CUSTOM("SELECT * FROM employee");
+					printf("<h3>Total number of employees: %s</h3>", $TotalEmployees->num_rows);
+					//print_r($TotalEmployees);
+
+					/************************************************************************************************
+					* Total COMMENTS
+					************************************************************************************************/
+					$TotalComments = $DBCLASS->CUSTOM("SELECT * FROM review");
+					printf("<h3>Total number of REVIEWS: %s</h3>", $TotalComments->num_rows);
+					//print_r($TotalComments);
+
+					/************************************************************************************************
+					* Total Likes
+					************************************************************************************************/
+					$TotalLikes = $DBCLASS->CUSTOM("SELECT * FROM likes");
+					printf("<h3>Total number of LIKES: %s</h3>", $TotalLikes->num_rows);
+					//print_r($TotalLikes);
+
+					echo "<br>";
+
+					/************************************************************************************************
+					* Top 10 LIKED employees
+					************************************************************************************************/
+					echo "<h2>TOP 10 LIKED EMPLOYEES</h2>";
+
+					//all employees
+					$employees = EmployeeListByID();
+
+					//print_r($employees);
+
+					//Likes per employee
+					$employeeLikes = array();
+					foreach ($employees as $key => $value) {
+						$likes = $DBCLASS->CUSTOM("SELECT * FROM likes WHERE employee_id = '" . $key . "'");
+
+						$employeeLikes[] = array('employeeID'=>$key, 'numberOfLikes' => $likes->num_rows, 'employeeName' => $value);
+
+					}
+
+					//sort of multi dimensional array
+					usort($employeeLikes, function($a, $b) {
+    				return  $b['numberOfLikes'] - $a['numberOfLikes'];
+					});
+
+					//print_r($employeeLikes);
+					// echo "<br>";
+
+					//Creat top 10 string for TOP 10 employees card
+					$top10employeeLikesText = "";
+					for ($i=1; $i < 11; $i++) {
+						$arrayPos = $i -1;
+						$top10employeeLikesText .= "<p class='card-text'>" . $i . ". LIKES (" . $employeeLikes[$arrayPos]['numberOfLikes'] . ") - " . $employeeLikes[$arrayPos]['employeeName'] . "</p>";
+					}
+
+
+					echo "
+					<div class='col-sx-12 col-md-4'>
+						<div class='card md-12 " . $colorArray[5] . "' >
+							<h5 class='card-header'>" . "TOP 10 LIKED" . "</h5>
+							<div class='card-body'>
+								<h5 class='card-title'>" . "EMPLOYEES" ."</h5>
+								" . $top10employeeLikesText . "
+							</div>
+						</div>
+					</div>
+					";
+
+					echo "<br>";
+
+					?>
 
       </main>
 

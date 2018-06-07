@@ -6,7 +6,9 @@ The idea of this project is to have a simple employee management system, with so
 ## Setup
 1. Setup a database in mysql with the database name as 'ses' and run the script in the setup folder "table.sql"
 2. Go to the folder config, edit the database connection settings
-3. After database setup and Tables created, import /setup/admin_user.sql to have and administrator login (user: admin ; Password: admin)
+3. After database setup and Tables created, import /setup/admin_user.sql to have and administrator login
++ user: admin
++ Password: admin
 
 ## External libraries used
 + noty [https://ned.im/noty]

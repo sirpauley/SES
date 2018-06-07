@@ -159,16 +159,9 @@ $header = "EMPLOYEES";
                   </div>
                 </div>
 
-                <!--
-                <button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-                    <a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-                    <a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a>
-                  </div>
-                -->
               </div>
 
-              <div class="table-responsive">
+              <div class="table table-sm table-responsive">
                 <table id="employeeTable" class="display table table-striped">
                   <thead>
                     <tr>

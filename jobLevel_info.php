@@ -63,9 +63,9 @@ $header = "JOB LEVEL INFORMATION";
           // print_r($employee);
             printf(
               "<div class='row'>".
-                "<div class='col'><h4>ID:</h4> %s</div>" .
-                "<div class='col'><h4>JOB LEVEL:</h4> %s</div>" .
-                "<div class='col'><h4>DESCRIPTION:</h4> %s</div>" .
+                "<div class='col-12 col-md-4'><h6>ID:</h6> %s <br><br></div>" .
+                "<div class='col-12 col-md-4'><h6>JOB LEVEL:</h6> %s<br><br></div>" .
+                "<div class='col-12 col-md-4'><h6>DESCRIPTION:</h6> %s<br><br></div>" .
               "</div>",
               $JobLevel['ID'],
               $JobLevel['level'],
@@ -78,6 +78,9 @@ $header = "JOB LEVEL INFORMATION";
           <div class='col'><a href="jobLevel.php"><button class="btn btn-warning"><em class="fa fa-arrow-left"></em> Back</button></a></div>
         </div>
 
+        <br>
+        <br>
+        
       </main>
 
     </div>

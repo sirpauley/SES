@@ -115,7 +115,7 @@ $header = "JOB LEVEL";
                 <table id="JobLevelTable" class="display table table-striped">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                    <!--  <th>ID</th>-->
                       <th>LEVEL</th>
                       <th>DESCRIPTION</th>
                       <th>CONTROL</th>
@@ -136,7 +136,7 @@ $header = "JOB LEVEL";
 
                         echo "
                           <tr>
-                            <td>$id</td>
+                            <!--<td>$id</td>-->
                             <td>$level</td>
                             <td>$description</td>
                             <td><a href='jobLevel_edit.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-warning'><em class='fa fa-pencil-square-o'></em></button></a> <a href='jobLevel_info.php?id=" . $value['ID'] . "'><button class='btn btn-circle btn-info'><em class='fa fa-info-circle'></em></button></a> </td>

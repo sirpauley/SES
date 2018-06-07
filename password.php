@@ -57,8 +57,8 @@ $employeeList = EmployeeListByID();
             <div class="container">
             <form id="passwordReset" class="form">
 
-                <label for="employee" class="col-3">EMPLOYEE: </label>
-                <select id="employee" name="employee" class="form-control col-3" required >
+                <label for="employee" class="col-12 col-md-3">EMPLOYEE: </label>
+                <select id="employee" name="employee" class="form-control col-12 col-md-3" required >
                 <option value=""> -SELECT- </option>
                 <?php
                 foreach ($employeeList as $key => $value) {
@@ -67,21 +67,24 @@ $employeeList = EmployeeListByID();
                 ?>
                 </select>
 
-                <label for="oldPassword" class="col-3">OLD PASSWORD: </label>
-                <input id="oldPassword" name="oldPassword" type="password" class="form-control col-3" required></input>
+                <label for="oldPassword" class="col-12 col-md-3">OLD PASSWORD: </label>
+                <input id="oldPassword" name="oldPassword" type="password" class="form-control col-12 col-md-3" required></input>
 
-                <label for="newPassword" class="col-3">NEW PASSWORD: </label>
-                <input id="newPassword" name="newPassword" type="password" class="form-control col-3" required></input>
+                <label for="newPassword" class="col-12 col-md-3">NEW PASSWORD: </label>
+                <input id="newPassword" name="newPassword" type="password" class="form-control col-12 col-md-3" required></input>
 
-                <label for="newPasswordRetype" class="col-3">NEW PASSWORD RETYPE: </label>
-                <input id="newPasswordRetype" name="newPasswordRetype" type="password" class="form-control col-3" required></input>
+                <label for="newPasswordRetype" class="col-12 col-md-3">NEW PASSWORD RETYPE: </label>
+                <input id="newPasswordRetype" name="newPasswordRetype" type="password" class="form-control col-12 col-md-3" required></input>
 
                 <div class="col-6">
                      <br>
-                    <button onclick="editEmployee();" type="submit" class="btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
+                    <button onclick="editEmployee();" type="submit" class="text-white btn btn-success pull-left"><em class="fa fa-pencil-square-o"></em>SAVE DATA</button>
                 </div>
             </form>
         </div>
+
+				<br>
+				<br>
 
       </main>
 

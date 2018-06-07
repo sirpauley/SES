@@ -67,21 +67,21 @@
             // print_r($employee);
             printf(
               "<div class='row'>".
-                "<div class='col'><h4>NAME:</h4> %s</div>" .
-                "<div class='col'><h4>SURNAME:</h4> %s</div>" .
-                "<div class='col'><h4>USERNAME:</h4> %s</div>" .
+                "<div class='col-4'><h6>NAME:</h6> %s</div>" .
+                "<div class='col-4'><h6>SURNAME:</h6> %s</div>" .
+                "<div class='col-4'><h6>USERNAME:</h6> %s</div>" .
               "</div>".
               "<br>" .
               "<div class='row'>" .
-                "<div class='col'><h4>EMPLOYEED date:</h4> %s</div>" .
-                "<div class='col'><h4>BIRTHDAY:</h4> %s</div>" .
-                "<div class='col'><h4>TELEPHONE:</h4> %s</div>" .
+                "<div class='col-4'><h6>EMPLOYEED date:</h6> %s</div>" .
+                "<div class='col-4'><h6>BIRTHDAY:</h6> %s</div>" .
+                "<div class='col-4'><h6>TELEPHONE:</h6> %s</div>" .
               "</div>".
               "<br>".
               "<div class='row'>" .
-                "<div class='col'><h4>EMAIL ADDRESS:</h4> %s</div>" .
-                "<div class='col'><h4>JOB DESCRIPTION:</h4> %s</div>" .
-                "<div class='col'><h4>ACTIVE:</h4> %s</div>".
+                "<div class='col-12 col-md-4'><h6>EMAIL ADDRESS:</h6> %s<br><br></div>" .
+                "<div class='col-12 col-md-4'><h6>JOB DESCRIPTION:</h6> %s<br><br></div>" .
+                "<div class='col-12 col-md-4'><h6>ACTIVE:</h6> %s<br><br></div>".
               "</div>",
               $employee['fullname'],
               $employee['surname'],

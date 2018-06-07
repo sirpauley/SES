@@ -66,14 +66,14 @@ $header = "JOB LEVEL EDIT";
             <div class="container">
             <form id="editJobLevel">
 
-                    <label for="id" class="col-3">ID: </label>
-                    <input id="id" name="id" type="text" class="form-control col-3" required value="<?php echo $JobLevel['ID']; ?>" readonly></input>
+                    <label for="id" class="col-12 col-md-4">ID: </label>
+                    <input id="id" name="id" type="text" class="form-control col-12 col-md-4" required value="<?php echo $JobLevel['ID']; ?>" readonly></input>
 
-                    <label for="joblevel" class="col-3">JOB LEVEL: </label>
-                    <input id="joblevel" name="joblevel" type="number" class="form-control col-3" required max="100" value="<?php echo $JobLevel['level'] ?>"></input>
+                    <label for="joblevel" class="col-12 col-md-4">JOB LEVEL: </label>
+                    <input id="joblevel" name="joblevel" type="number" class="form-control col-12 col-md-4" required max="100" value="<?php echo $JobLevel['level'] ?>"></input>
 
-                    <label for="description" class="col-3">DESCRIPTION: </label>
-                    <input id="description" name="description" type="text" class="form-control col-3" required value="<?php echo $JobLevel['description'] ?>"></input>
+                    <label for="description" class="col-12 col-md-4">DESCRIPTION: </label>
+                    <input id="description" name="description" type="text" class="form-control col-12 col-md-4" required value="<?php echo $JobLevel['description'] ?>"></input>
 
 										<br>
 

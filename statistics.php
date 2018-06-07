@@ -121,34 +121,32 @@ include_once("include/functions.php");
 
 							if( ($key+1)%3 == 0 ){
 								echo "</div>";
-								echo "<br>";
 								echo "<div class='row'>";
 							}
 
 						}//for
 						echo "</div>";
-						echo "<br>";
 					}
 
 					/************************************************************************************************
 					* Total number of emloyees
 					************************************************************************************************/
 					$TotalEmployees = $DBCLASS->CUSTOM("SELECT * FROM employee");
-					printf("<h3>Total number of employees: %s</h3>", $TotalEmployees->num_rows);
+					printf("<div class='col-12'><h4>Total number of employees: </h4>%s</div>", $TotalEmployees->num_rows);
 					//print_r($TotalEmployees);
 
 					/************************************************************************************************
 					* Total COMMENTS
 					************************************************************************************************/
 					$TotalComments = $DBCLASS->CUSTOM("SELECT * FROM review");
-					printf("<h3>Total number of REVIEWS: %s</h3>", $TotalComments->num_rows);
+					printf("<div class='col-12'><h4>Total number of REVIEWS: </h4>%s</div>", $TotalComments->num_rows);
 					//print_r($TotalComments);
 
 					/************************************************************************************************
 					* Total Likes
 					************************************************************************************************/
 					$TotalLikes = $DBCLASS->CUSTOM("SELECT * FROM likes");
-					printf("<h3>Total number of LIKES: %s</h3>", $TotalLikes->num_rows);
+					printf("<div class='col-12'><h4>Total number of LIKES: </h4>%s</div>", $TotalLikes->num_rows);
 					//print_r($TotalLikes);
 
 					echo "<br>";

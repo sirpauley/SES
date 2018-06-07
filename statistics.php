@@ -196,7 +196,7 @@ include_once("include/functions.php");
 					//Likes per employee
 					$employeeLikes = array();
 					foreach ($employees as $key => $value) {
-						$likes = $DBCLASS->CUSTOM("SELECT * FROM likes WHERE employee_id = '" . $key . "'");
+						$likes = $DBCLASS->CUSTOM("SELECT * FROM likes WHERE employee_liked_id = '" . $key . "'");
 
 						$employeeLikes[] = array('employeeID'=>$key, 'numberOfLikes' => $likes->num_rows, 'employeeName' => $value);
 

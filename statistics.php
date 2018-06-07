@@ -81,7 +81,7 @@ include_once("include/functions.php");
 															'text-white bg-dark' 						//7
 														);
 
-					if(isset($BirthdayArray) && $BirthdayArray['SQLsuccess'] !== 'FALSE'){
+					if(isset($BirthdayArray) && isset($BirthdayArray['SQLsuccess']) !== 'FALSE'){
 						echo "<h2>UPCOMMING BIRTHDAYS</h2>";
 						foreach ($BirthdayArray as $key => $value) {
 
@@ -211,8 +211,9 @@ include_once("include/functions.php");
 					// echo "<br>";
 
 					//Creat top 10 string for TOP 10 employees card
+					$arrayCount = count($employeeLikes) + 1;
 					$top10employeeLikesText = "";
-					for ($i=1; $i < 11; $i++) {
+					for ($i=1; $i < $arrayCount; $i++) {
 						$arrayPos = $i -1;
 						$top10employeeLikesText .= "<p class='card-text'>" . $i . ". LIKES (" . $employeeLikes[$arrayPos]['numberOfLikes'] . ") - " . $employeeLikes[$arrayPos]['employeeName'] . "</p>";
 					}

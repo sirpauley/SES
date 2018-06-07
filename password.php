@@ -55,7 +55,7 @@ $employeeList = EmployeeListByID();
           <!-- Code body from here -->
           <div class="">
             <div class="container">
-            <form id="passwordReset" class="form">
+            <form id="passwordReset" class="form" autocomplete="off">
 
                 <label for="employee" class="col-12 col-md-3">EMPLOYEE: </label>
                 <select id="employee" name="employee" class="form-control col-12 col-md-3" required >

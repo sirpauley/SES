@@ -117,7 +117,7 @@
     <fieldset>
         <legend> <h1>Login Details</h1></legend>
             <div>
-                <form >
+                <form autocomplete="off">
                     <div class="row ">
                         <div class="col"><input type="text" id="user_name" class="form-control" name="user_name" maxlength="50" placeholder="Username"></div>
                     </div>

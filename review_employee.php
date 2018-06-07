@@ -128,7 +128,7 @@ $employees = EmployeeListByID();
                     <div class='card md-3 " . $colorArray[$randomNum] . "' >
                       <h5 class='card-header'>" . $value['comment_date'] . "</h5>
                       <div class='card-body'>
-											<h5 class='card-title'>" .$employees[$value['employee_id']] . "</h5>
+											<h5 class='card-title'>" .$employees[$value['reviewer_id']] . "</h5>
                         <p class='card-text'>" . $value['comment'] . "</p>
                       </div>
                     </div>

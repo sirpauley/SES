@@ -111,7 +111,7 @@ $employees = EmployeeListByID();
                                   'bg-light',
                                   'text-white bg-dark');
 
-              if(isset($ReviewArray) && $ReviewArray['SQLsuccess'] !== 'FALSE'){
+              if(isset($ReviewArray) && isset($ReviewArray['SQLsuccess']) !== 'FALSE'){
 
 
                 foreach ($ReviewArray as $key => $value) {

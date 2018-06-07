@@ -119,11 +119,11 @@
             <div>
                 <form autocomplete="off">
                     <div class="row ">
-                        <div class="col"><input type="text" id="user_name" class="form-control" name="user_name" maxlength="50" placeholder="Username"></div>
+                        <div class="col"><input type="text" id="user_name" class="form-control" name="user_name" maxlength="50" placeholder="Username" autocomplete="false"></div>
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col"><input type="password" id="password" class="form-control" name="password" maxlength="50" placeholder="password"></div>
+                        <div class="col"><input type="password" id="password" class="form-control" name="password" maxlength="50" placeholder="password" autocomplete="false"></div>
                     </div>
                     <br>
                     <div class="row">
